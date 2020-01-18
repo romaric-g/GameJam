@@ -4,16 +4,16 @@
             <input @click="Launch()" type="submit" value="< Retour sur la page" class="return"/>
         </div>
         <div>
-            <div class="gauche" style="flex-grow: 1">
-                <input @click="Left()" type="submit" value="<"/>
+            <div style="flex-grow: 1">
+                <input @click="Left()" type="submit" value="<" class="gauche"/>
             </div>
             <div class="image" style="flex-grow: 8">
                 <img href="../images/map/Desert\ de\ jour.png" style="display:'inline"/>
                 <img href="../images/map/Ocean\ de\ jour.png" style="display:'inline"/>
                 <img href="../images/map/plaine\ de\ nuit.png" style="display:'inline"/>
             </div>
-            <div class="droite" style="flex-grow: 1">
-                <input @click="Right()" type="submit" value=">"/>
+            <div style="flex-grow: 1">
+                <input @click="Right()" type="submit" value=">" class="droite"/>
             </div>
         </div>
     </div>
@@ -21,15 +21,21 @@
 
 <script>
 export default {
+    data(){
+        pointermap: nowmap();
+        }
+    }
   methods: {
     Launch: function(event) {
       router.push('/Play');
   },
     Right: function(event) {
         pointermap++;
+        pointermap = pointermap %12;
     },
     Left: function(event) {
         pointermap--;
+        pointermap = pointermap %12;
     }
   }
 }
@@ -41,7 +47,7 @@ export default {
     font-size: 200%;
     background-color: #264653;
     Color: white;
-    font-size: 20%;
+    font-size: 60%;
     border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
@@ -50,8 +56,8 @@ export default {
 }
 
 .gauche {
-    padding-top: 48%;
-    padding-left: 5%;
+    margin-top: 48%;
+    margin-left: 5%;
     background-color: #ef476f;
     Color: white;
     font-size: 20%;
@@ -63,12 +69,12 @@ export default {
 }
 
 .image {
-    padding-top: 48%;
+    margin-top: 48%;
 }
 
 .droite {
-    padding-top: 48%;
-    padding-right: 5%;
+    margin-top: 48%;
+    margin-right: 5%;
     background-color: #ef476f;
     Color: white;
     font-size: 20%;
