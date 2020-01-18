@@ -1,15 +1,19 @@
 import vuex from 'vuex'
 
-const players = []
-const game = 
+var players = []
+var nbPlayers = 0
+// const game =
 
 export default new vuex.Store({
     state: {
-        players
+        players,
+        nbPlayers
     },
     mutations: {
         REGISTER_PLAYER: (state, value) => {
-            state.players.add(players)
+            state.players.push(value)
+            nbPlayers++;
+            console.log(players)
         }
     },
     getters: {},
