@@ -11,3 +11,19 @@ export default {
   components: { Home }
 }
 </script>
+
+
+<style lang="scss">
+body {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+#app {
+  max-width: 55vh;
+  margin: 0 auto;
+  background-color: white;
+  height: 100%;
+}
+</style>
