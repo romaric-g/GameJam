@@ -14,7 +14,7 @@
         <ul>
           <li v-for="(item, index) in registedPlayers" :key="item">
             <div class="player-item">
-              <p>{{ item.name }}</p><button @click.prevent="del(item.name)" type="submit" class="submit-Box">-</button>
+              <p>Nom : {{ item.name }} Role : {{ item.role.name }}</p><button @click.prevent="del(item)" type="submit" class="submit-Box">-</button>
             </div>
           </li>
         </ul>

@@ -1,24 +1,17 @@
 import vuex from 'vuex'
-
-// export class Player {
-//   constructor(name, role) {
-//     this.name = name;
-//     this.role = role;
-//   }
-// }
-
 import Player from "./objects/Player.js"
+import Role from "./objects/Role.js"
 
 var players = []
 
 export default new vuex.Store({
   state: {
-    players
+    players,
   },
   mutations: {
     REGISTER_PLAYER: (state, value) => {
-      console.log(value)
-      let p = new Player(value, null)
+      var role = new Role()
+      let p = new Player(value, role)
       state.players.push(p)
     },
     DELETE_PLAYER: (state, value) => {
