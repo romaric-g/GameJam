@@ -4,7 +4,7 @@
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
         <div class="addPlayerBox">
-            <input class="writeBox" type="text" placeholder="Nom du joueur"  name="player" value=""/>
+            <input v-model="playerName" class="writeBox" type="text" placeholder="Nom du joueur" name="player" value="" @submit.prevent="addPlayer"/>
             <button class="submitBox" type="submit" @click.prevent="addPlayer()">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="357px" height="357px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve"><g><g id="add"><path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/></g></g></svg>
             </button>
@@ -12,7 +12,9 @@
       </form>
       <div class="player-list">
         <ul>
-          <li></li>
+          <li v-for="(item, index) in registedPlayers" :key="item">
+            {{ item.name }}
+          </li>
         </ul>
       </div>
     </div>
@@ -27,12 +29,22 @@ import store from "../TodosStore.js"
 import app from "../App.vue"
 
 export default {
+  data: {
+    playerName: ""
+  },
   methods: {
-    addPlayer: function(event) {
-      store.commit('REGISTER_PLAYER', document.form.player.value);
+    addPlayer (event) {
+      console.log(this.playerName)
+      store.commit('REGISTER_PLAYER', this.playerName);
+      this.playerName = ""
     },
     launch: function(event) {
       this.$router.push('/play');
+    }
+  },
+  computed: {
+    registedPlayers: function() {
+      return store.getters.getPlayersRegisted;
     }
   }
 }
@@ -81,7 +93,7 @@ export default {
         font-size: 1em;
         color: black;
 
-      
+
       }
       .submitBox {
         flex-shrink: 0;
