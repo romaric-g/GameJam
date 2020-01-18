@@ -20,6 +20,9 @@ body {
   width: 100vw;
   margin: 0;
 }
+p, h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
 #app {
   max-width: 55vh;
   margin: 0 auto;

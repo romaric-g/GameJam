@@ -11,6 +11,11 @@ const router = new VueRouter({
     path: '/',
     name: 'Home',
     component: require('./components/Home.vue').default
+  },
+  {
+    path: '/play',
+    name: 'Play',
+    component: require('./components/Play.vue').default
   }]
 })
 
