@@ -49,8 +49,13 @@ export default {
 
 <style lang="scss">
     .progressBarElement {
+        padding: 0 5px;
         p {
             font-size: 18px;
+            color: white;
+        }
+        .status p {
+            font-size: 0.8em;
         }
         .progressBar {
             display: flex;
@@ -62,6 +67,7 @@ export default {
                 position: relative;
                 height: 4px;
                 width: 100%;
+                margin-right: 15px;
                 background-color: white;
                 .progress {
                     position: absolute;

@@ -14,7 +14,10 @@ export default {
 
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Ibarra+Real+Nova&display=swap');
+
 body {
+  font-family: 'Ibarra Real Nova', serif;
   background-color: black;
   height: 100vh;
   width: 100vw;
