@@ -1,20 +1,23 @@
 <template>
-  <div class="">
-    <div class="add">
-      <div class="text">
-        <label>Ajouter un </br>joueur
-          <hr width="60%" size="1" color="#ef476f" align="left">
-        </label>
-      </div>
-      <div class="adding">
-        <form name="form">
-          <input type="text" placeholder="Ex: EMMI" class="barre" name="player" value=""/>
-          <input type="submit" value="+" class="bouton" @click.prevent="addPlayer()" />
-        </form>
+  <div class="home-page">
+    <div class="add-player">
+      <p class="title">Ajouter un<br>joueur</p>
+      <form name="addplayerform">
+        <div class="addPlayerBox">
+            <input class="writeBox" type="text" placeholder="Nom du joueur"  name="player" value=""/>
+            <button class="submitBox" type="submit" @click.prevent="addPlayer()">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="357px" height="357px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve"><g><g id="add"><path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/></g></g></svg>
+            </button>
+        </div>
+      </form>
+      <div class="player-list">
+        <ul>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div class="start">
-      <input @click.prevent="launch()" type="submit" value="Commencer la partie" class="start-bouton"/>
+      <button @click.prevent="launch()" type="submit" class="start-bouton">Commencer la partie</button>
     </div>
   </div>
 </template>
@@ -37,6 +40,90 @@ export default {
 
 <style lang="scss">
 
+.home-page {
+  padding: 80px 40px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  .add-player {
+    flex: 1;
+    .title {
+      position: relative;
+      font-size: 2.7em;
+      line-height: 1em;
+      color: white;
+      margin: 60px 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        height: 1px;
+        background-color: #EF476F;
+        width: 80px;
+      }
+    }
+
+    .addPlayerBox {
+      display: flex;
+      flex-direction: row;
+      height: 50px;
+
+      .writeBox {
+        flex: 1;
+        margin-right: 8px;
+        height: 100%;
+        border: none;
+        padding: 0 20px;
+        box-sizing: border-box;
+        font-size: 1em;
+        color: black;
+
+      
+      }
+      .submitBox {
+        flex-shrink: 0;
+        display: block;
+        width: 60px;
+        height: 100%;
+        background-color: #EF476F;
+        color: white;
+        border: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          height: 20px;
+          width: 20px;
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
+  }
+
+
+  .start {
+    padding: 20px 0;
+    flex-shrink: 0;
+
+    button {
+      width: 100%;
+      height: 55px;
+      background-color: #EF476F;
+      color: white;
+      border: none;
+      font-size: 1.1em;
+    }
+  }
+}
+
+/*
 .add{
   padding-top: 40%;
   display:flex;
@@ -94,5 +181,5 @@ hr {
   cursor: pointer;
   border: none;
   text-decoration: none;
-}
+}*/
 </style>
