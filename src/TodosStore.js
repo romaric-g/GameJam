@@ -1,28 +1,42 @@
 import vuex from 'vuex'
 
+// export class Player {
+//   constructor(name, role) {
+//     this.name = name;
+//     this.role = role;
+//   }
+// }
+
+import Player from "./objects/Player.js"
+
 var players = []
-var nbPlayers = 0
-// const game =
 
 export default new vuex.Store({
   state: {
-    players,
-    nbPlayers
+    players
   },
   mutations: {
     REGISTER_PLAYER: (state, value) => {
-      state.players.push(value)
-      nbPlayers++;  
+      console.log(value)
+      let p = new Player(value, null)
+      state.players.push(p)
     },
 
-    DELETE_PLAYER: (state, value) => {
+    DELETE_PLAYER: (s, value) => {
       if(value < state.nbPlayers){
-        state.players.splice(value, 1);
+        s.players.splice(value, 1);
       } else {
         console.log("Impossible de supprimer le joueur");
       }
     }
   },
-  getters: {},
+  getters: {
+    nbPlayers: state => {
+      return state.players.size();
+    },
+    getPlayersRegisted: state => {
+      return state.players;
+    }
+  },
   actions: {},
 })
