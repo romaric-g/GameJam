@@ -13,7 +13,9 @@
       <div class="player-list">
         <ul>
           <li v-for="(item, index) in registedPlayers" :key="item">
-            {{ item.name }} <button @click.prevent="del(item.name)" type="submit" class="submit-Box">Delete</button>
+            <div class="player-item">
+              <p>{{ item.name }}</p><button @click.prevent="del(item.name)" type="submit" class="submit-Box">-</button>
+            </div>
           </li>
         </ul>
       </div>
@@ -120,6 +122,35 @@ export default {
         }
       }
     }
+
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      .player-item {
+        width: 100%;
+        display: flex;
+        border-bottom: solid 1px #fff;
+        margin: 8px 0;
+        position: relative;
+
+        p {
+          flex: 1;
+          font-size: 1.3em;
+          color: white;
+        }
+        button {
+          flex-shrink: 0;
+          height: 25px;
+          width: 25px;
+          border: none;
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+        }
+      }
+    }
   }
 
   .start {
@@ -136,64 +167,4 @@ export default {
     }
   }
 }
-
-/*
-.add{
-  padding-top: 40%;
-  display:flex;
-  flex-direction: column;
-}
-
-.text{
-  display:flex;
-  align-items: left;
-}
-
-.adding{
-  display:flex;
-  flex-direction: line;
-  align-items: center;
-  margin-left: 3%
-}
-
-.start{
-  display:flex;
-  align-items: center;
-  margin-top: 75%;
-  margin-left: 3%
-}
-
-.barre{
-  font-size: 350%;
-  width: 90%;
-  margin: 1em 0;
-}
-
-label {
-  font-size: 80px;
-  color: white;
-}
-
-hr {
-  color: #ef476f;
-  margin: -0.1em 0;
-}
-
-.bouton {
-  background-color: #ef476f;
-  Color: white;
-  font-size: 400%;
-  border: none;
-}
-
-.start-bouton {
-  background-color: #ef476f;
-  Color: white;
-  font-size: 400%;
-  font-weight: bold;
-  border-radius: 3px;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-}*/
 </style>
