@@ -1,23 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
 const router = new VueRouter({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'Home',
-    component: Home
+    component: require('./components/Home.vue').default
   }]
 })
-
-import App from './App.vue'
-import Home from './components/Home.vue'
 
 
 new Vue({
   el: '#app',
-  router,
-  render: h => h(App)
+  router: router,
+  render: h => h(require('./App.vue').default)
 })
