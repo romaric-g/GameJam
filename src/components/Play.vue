@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="content">
-
+            <router-view></router-view>
         </div>
         <div class="play-footer">
             <div class="biome-box">
@@ -54,7 +54,6 @@ export default {
 
     .content {
         flex: 1;
-        background-color: red;
     }
 }
 

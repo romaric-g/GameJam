@@ -15,7 +15,16 @@ const router = new VueRouter({
   {
     path: '/play',
     name: 'Play',
-    component: require('./components/Play.vue').default
+    component: require('./components/Play.vue').default,
+    children: [
+      { path: '/', component: require('./components/play/Index.vue').default},
+      { path: 'ressource', component: require('./components/play/Resource.vue').default},
+      { path: 'science', component: require('./components/play/Science.vue').default}
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/'
   }]
 })
 
