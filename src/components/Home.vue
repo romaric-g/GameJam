@@ -3,37 +3,33 @@
     <div class="add">
       <div class="text">
         <label>Ajouter un </br>joueur
-        <hr width="60%" size="1" color="#ef476f" align="left">
-      </label>
+          <hr width="60%" size="1" color="#ef476f" align="left">
+        </label>
       </div>
       <div class="adding">
-        <input type="text" placeholder="Ex: EMMI" class="barre"/>
-        <input type="submit" value="+" class="bouton" />
+        <form name="form">
+          <input type="text" placeholder="Ex: EMMI" class="barre" name="player" value=""/>
+          <input type="submit" value="+" class="bouton" @click.prevent="addPlayer()" />
+        </form>
       </div>
     </div>
     <div class="start">
-      <input @click="launch()" type="submit" value="Commencer la partie" class="start-bouton"/>
+      <input @click.prevent="launch()" type="submit" value="Commencer la partie" class="start-bouton"/>
     </div>
   </div>
 </template>
 
 <script>
+import store from "../TodosStore.js"
+import app from "../App.vue"
+
 export default {
-  date() {
-    return {
-      Players: {
-        tab_player: [],
-        nbplayer: 0
-      }
-    };
-  },
   methods: {
-    AddPlayer: function(event) {
-      nbplayer ++;
+    addPlayer: function(event) {
+      store.commit('REGISTER_PLAYER', document.form.player.value);
     },
     launch: function(event) {
-      console.log("aled")
-      router.push('/Play');
+      this.$router.push('/play');
     }
   }
 }
