@@ -24,7 +24,7 @@ export default new vuex.Store({
     DELETE_PLAYER: (state, value) => {
       let indice = 0;
       for(let i = 0; i < state.players.size; i++){
-        if(state.players[i].name == value){
+        if(state.players[i] == value){
           indice = i;
         }
       }
