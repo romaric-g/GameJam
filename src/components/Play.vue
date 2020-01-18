@@ -1,7 +1,7 @@
 <template>
     <div>
         <ProgressBar name="Ecologie" v-bind:currentValue="60" v-bind:maxValue="100" ></ProgressBar>
-        <ProgressBar name="Ecologie" v-bind:currentValue="20" v-bind:maxValue="100" ></ProgressBar>
+        <ProgressBar name="Energie" v-bind:currentValue="20" v-bind:maxValue="100" ></ProgressBar>
     </div>
 </template>
 
