@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import router from "../router";
-import store from "../Store";
 
 export default {
     date() {

@@ -23,7 +23,7 @@ body {
 #app {
   max-width: 55vh;
   margin: 0 auto;
-  background-color: white;
+  background-color: #264653;
   height: 100%;
 }
 </style>
