@@ -21,25 +21,15 @@
 
 <script>
 import store from "../TodosStore.js"
-
-var c = document
+import app from "../App.vue"
 
 export default {
-  data() {
-    return {
-      Players: {
-        tab_player: [],
-        nbplayer: 0
-      }
-    };
-  },
   methods: {
     addPlayer: function(event) {
-      store.commit('REGISTER_PLAYER', c.form.player.value);
+      store.commit('REGISTER_PLAYER', document.form.player.value);
     },
     launch: function(event) {
-      console.log(store.state.nbPlayers)
-      router.push('/Play');
+      this.$router.push('/play');
     }
   }
 }
