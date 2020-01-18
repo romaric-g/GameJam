@@ -107,7 +107,6 @@ export default {
     }
   }
 
-
   .start {
     padding: 20px 0;
     flex-shrink: 0;
