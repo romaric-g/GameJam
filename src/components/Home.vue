@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="start">
-      <input @click="changePage()" type="submit" value="Commencer la partie" class="start-bouton"/>
+      <input @click="launch()" type="submit" value="Commencer la partie" class="start-bouton"/>
     </div>
   </div>
 </template>
@@ -31,8 +31,8 @@ export default {
     AddPlayer: function(event) {
       nbplayer ++;
     },
-    Launch: function(event) {
-      store.dispatch('',this.form.username);
+    launch: function(event) {
+      console.log("aled")
       router.push('/Play');
     }
   }
