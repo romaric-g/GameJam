@@ -1,17 +1,35 @@
 <template>
     <div class="home">
-        <p>This is home</p>
+      <label for="pseudo">Ajouter un joueur :</label><br>
+      <input type="text" placeholder="Ex: EMMI"/>
     </div>
 </template>
 
-
 <script>
 export default {
+  date() {
+      return {
+          Players: {
+              tab_player: [],
+              nbplayer: 0
+          }
+      };
+  },
+  methods: {
+      AddPlayer: function(event) {
+          nbplayer ++;
+      },
+      Launch: function(event) {
+          store.dispatch('',this.form.username);
+          router.push('/Game');
+      }
+  }
 }
 </script>
 
-<style>
-    p {
-        margin: 0;
-    }
+<style lang="scss">
+label {
+  font-size: 100px;
+  color: white;
+}
 </style>
