@@ -13,7 +13,7 @@
       <div class="player-list">
         <ul>
           <li v-for="(item, index) in registedPlayers" :key="item">
-            {{ item.name }}
+            {{ item.name }} <button @click.prevent="del(item.name)" type="submit" class="submit-Box">Delete</button>
           </li>
         </ul>
       </div>
@@ -40,6 +40,9 @@ export default {
     },
     launch: function(event) {
       this.$router.push('/play');
+    },
+    del: function(event, name){
+      store.commit('DELETE_PLAYER', name)
     }
   },
   computed: {

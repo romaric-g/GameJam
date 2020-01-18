@@ -21,13 +21,14 @@ export default new vuex.Store({
       let p = new Player(value, null)
       state.players.push(p)
     },
-
-    DELETE_PLAYER: (s, value) => {
-      if(value < state.nbPlayers){
-        s.players.splice(value, 1);
-      } else {
-        console.log("Impossible de supprimer le joueur");
+    DELETE_PLAYER: (state, value) => {
+      let indice = 0;
+      for(let i = 0; i < state.players.size; i++){
+        if(state.players[i].name == value){
+          indice = i;
+        }
       }
+      state.players.splice(indice, 1);
     }
   },
   getters: {
