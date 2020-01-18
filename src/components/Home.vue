@@ -13,7 +13,7 @@
       <div class="player-list">
         <ul>
           <li v-for="(item, index) in registedPlayers" :key="item">
-            {{ item.name }} <button @click.prevent="del(item.name)" type="submit" class="submit-Box">Delete</button>
+            {{ item.name }} <button @click.prevent="del(item)" type="submit" class="submit-Box">Delete</button>
           </li>
         </ul>
       </div>
