@@ -27,17 +27,30 @@
 </template>
 
 <script>
+
+import store from "../../TodosStore.js"
+import { mapState } from 'vuex'
+
 export default {
+    data() {
+        return {}
+    },
+    store,
     methods: {
         clickScience(event) {
+            store.commit('RUN_INDIVIDUAL_ACTION', 0);
             this.$router.push('/play/science');
         },
         clickResource(event) {
+            store.commit('RUN_INDIVIDUAL_ACTION', 1);
             this.$router.push('/play/ressource');
         },
         clickCapacity(event) {
 
         },
+    },
+    computed: {
+        ...mapState(["isStart","players"])
     }
 }
 </script>

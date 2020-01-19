@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isStart" class="home-page">
+  <div class="home-page">
     <div class="add-player">
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">

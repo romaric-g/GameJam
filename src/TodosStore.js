@@ -3,17 +3,23 @@ import Player from "./objects/Player.js"
 import Role from "./objects/Role.js"
 import RoundManager from './objects/RoundManager.js'
 import EnvironmentManager from './objects/EnvironmentManager.js'
+import Inventory from './objects/Inventory.js'
+import ScienceCardManager from './objects/ScienceCardManager.js'
 
 var players = []
 var roundManager = new RoundManager(players);
 var environmentManager = new EnvironmentManager()
+var inventory = new Inventory()
+var scienceCardManager = new ScienceCardManager();
 
 export default new vuex.Store({
   state: {
     players,
     isStart: false,
     roundManager,
-    environmentManager
+    environmentManager,
+    scienceCardManager,
+    inventory
   },
   mutations: {
     REGISTER_PLAYER: (state, value) => {
@@ -32,6 +38,14 @@ export default new vuex.Store({
       if(!state.isStart && state.players.length > 0) {
         state.isStart = true;
         state.roundManager.nextRound();
+      }
+    },
+    RUN_INDIVIDUAL_ACTION: (state, actionID) => {
+      console.log("Stat 1" + state.roundManager.individualStats  )
+      if(state.roundManager.individualStats == 'individual') {
+        console.log("Stat 2")
+        state.roundManager.individualRoundPlayer.runAction(actionID);
+        state.scienceCardManager.reavealCard()
       }
     }
   },
