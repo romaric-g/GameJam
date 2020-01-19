@@ -23,6 +23,19 @@ export default class ScienceCardManager {
     reavealCard() {
         console.log("lqs,fkse,fkz enkoeznfkzn ekfnzekl f")
         var i = Math.floor(Math.random() * this.cards.length);
-        this.availableCard = this.cards.splice(i,1);
+        this.availableCard = this.cards.splice(i,1)[0];
     }
+
+    removeFromCardList() {
+        this.availableCard = null
+    }
+
+    returnToCardList() {
+        this.cards.push(this.availableCard)
+        this.availableCard = null
+    }
+
+
+
+
 }

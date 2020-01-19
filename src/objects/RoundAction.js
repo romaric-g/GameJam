@@ -6,16 +6,12 @@ export default class RoundAction {
         
     }
 
-    startAction(callback) {
-        this.callback = callback
-    }
-
     runAction(number) {
+        console.log("Action: "  + number)
         this.actionChoise = number;        
     }
 
     finish() {
         this.roundFinish = true;
-        callback();
     }
 }

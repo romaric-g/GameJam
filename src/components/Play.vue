@@ -48,7 +48,7 @@ export default {
       return this.environmentManager.environmentvalue
     },
     roundValue() {
-      return this.roundManager.roundValue;
+      return this.roundManager.round
     },
     player() {
       return this.roundManager.individualRoundPlayer.player.name;
@@ -71,6 +71,8 @@ export default {
   .play-header, .play-footer {
     flex-shrink: 0;
     padding: 10px 0;
+    display: flex;
+    flex-direction: row;
 
     .bars {
       flex: 1;

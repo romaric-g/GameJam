@@ -47,6 +47,17 @@ export default new vuex.Store({
         state.roundManager.individualRoundPlayer.runAction(actionID);
         state.scienceCardManager.reavealCard()
       }
+    },
+    SCIENCE_CARD_CHOISE: (state, keep) => {
+      if(keep) {
+        state.inventory.addCard(state.scienceCardManager.availableCard)
+        state.scienceCardManager.removeFromCardList()
+      }else{
+        state.scienceCardManager.returnToCardList()
+      }
+    },
+    NEXT_PLAYER: (state) => {
+      state.roundManager.nextPlayer()
     }
   },
   getters: {},

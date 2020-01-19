@@ -36,15 +36,14 @@ export default class RoundManager {
     }
 
     nextPlayer() {
-        if ( (this.individualRoundPlayer = this.roundActions.shift()) !== undefined ) {
-            this.individualRoundPlayer.startAction(this.nextPlayer);
-        } else{
+        console.log("next player")
+        if ( (this.individualRoundPlayer = this.roundActions.shift()) === undefined ) {
             this.startMoveStats();
         }
     }
 
     startMoveStats() {
         //todo gerer le systeme de mouvement puis, executer en calback 'nextRound'
-        nextRound()
+        this.nextRound()
     }
 }
