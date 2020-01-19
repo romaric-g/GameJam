@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div v-if="!isStart" class="home-page">
     <div class="add-player">
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
@@ -12,9 +12,9 @@
       </form>
       <div class="player-list">
         <ul>
-          <li v-for="(item, index) in registedPlayers" :key="item">
+          <li v-for="(item, index) in players" :key="index">
             <div class="player-item">
-              <p>Nom : {{ item.name }} Role : {{ item.role.name }}</p><button @click.prevent="del(item)" type="submit" class="submit-Box">-</button>
+              <p>{{ item.name }}</p><button @click.prevent="del(item)" type="submit" class="submit-Box">-</button>
             </div>
           </li>
         </ul>
@@ -28,29 +28,30 @@
 
 <script>
 import store from "../TodosStore.js"
-import app from "../App.vue"
+import { mapState } from 'vuex'
 
 export default {
-  data: {
-    playerName: ""
+  data() {
+    return {
+      playerName: ""
+    }
   },
+  store,
   methods: {
     addPlayer (event) {
-      console.log(this.playerName)
       store.commit('REGISTER_PLAYER', this.playerName);
       this.playerName = ""
     },
     launch: function(event) {
+      store.commit('START_GAME');
       this.$router.push('/play');
     },
-    del: function(event, name){
-      store.commit('DELETE_PLAYER', name)
+    del: function(item){
+      store.commit('DELETE_PLAYER', item)
     }
   },
   computed: {
-    registedPlayers: function() {
-      return store.getters.getPlayersRegisted;
-    }
+    ...mapState(["isStart","players"])
   }
 }
 </script>

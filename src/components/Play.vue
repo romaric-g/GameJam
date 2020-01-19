@@ -1,8 +1,8 @@
 <template>
-    <div class="play-page">
+    <div v-if="isStart" class="play-page">
         <div class="play-header">
             <div>
-                <ProgressBar name="Ecologie" v-bind:currentValue="50" v-bind:maxValue="100" ></ProgressBar>
+                <ProgressBar name="Ecologie" v-bind:currentValue="this.envValue" v-bind:maxValue="100" ></ProgressBar>
                 <ProgressBar name="Energie" v-bind:currentValue="50" v-bind:maxValue="100" ></ProgressBar>
             </div>
             <div class="round-number">
@@ -28,11 +28,22 @@
 
 <script>
 import ProgressBar from "./elements/ProgressBar.vue"
+import store from "../TodosStore.js"
+import { mapState } from 'vuex'
 
 export default {
     components: { ProgressBar },
-    data: {
+    store,
+    data() {
+        return {
 
+        }
+    },
+    computed: {
+        envValue() {
+            return this.environmentManager.environmentvalue
+        },
+        ...mapState(["environmentManager","roundManager","isStart"])
     }
 }
 </script>
