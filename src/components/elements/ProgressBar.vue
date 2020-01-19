@@ -49,8 +49,12 @@ export default {
 
 <style lang="scss">
     .progressBarElement {
+        font-family: 'Titillium Web', sans-serif;
         padding: 0 5px;
         p {
+            font-weight: 200;
+            line-height: 1em;
+            margin-top: 2px;
             font-size: 18px;
             color: white;
         }

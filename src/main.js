@@ -14,7 +14,6 @@ const router = new VueRouter({
   },
   {
     path: '/play',
-    name: 'Play',
     component: require('./components/Play.vue').default,
     children: [
       { path: '/', component: require('./components/play/Index.vue').default},
@@ -27,7 +26,6 @@ const router = new VueRouter({
     redirect: '/'
   }]
 })
-
 
 new Vue({
   el: '#app',
