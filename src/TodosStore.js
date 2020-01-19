@@ -31,6 +31,7 @@ export default new vuex.Store({
     START_GAME: (state) => {
       if(!state.isStart && state.players.length > 0) {
         state.isStart = true;
+        state.roundManager.nextRound();
       }
     }
   },

@@ -1,9 +1,5 @@
 <template>
     <div class="index-play">
-        <div class="play-title">
-            <h1>À vous de jouer</h1>
-            <p>Romaric</p>
-        </div>
         <div class="actions-grid">
             <button @click.prevent="clickScience" class="science-box">
 
@@ -49,13 +45,6 @@ export default {
 
 <style lang="scss">
 .index-play {
-    .play-title {
-        color: white;
-        text-align: center;
-        font-size: 1.5em;
-        font-weight: 200;
-
-    }
 
     .actions-grid {
         display: grid;

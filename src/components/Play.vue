@@ -1,13 +1,17 @@
 <template>
     <div v-if="isStart" class="play-page">
         <div class="play-header">
-            <div>
+            <div class="bars">
                 <ProgressBar name="Ecologie" v-bind:currentValue="this.envValue" v-bind:maxValue="100" ></ProgressBar>
                 <ProgressBar name="Energie" v-bind:currentValue="50" v-bind:maxValue="100" ></ProgressBar>
             </div>
             <div class="round-number">
-                <p></p>
+                <p>{{ roundValue }}</p>
             </div>
+        </div>
+        <div class="play-title">
+            <h1>À vous de jouer</h1>
+            <p>{{ player }}</p>
         </div>
         <div class="content">
             <router-view></router-view>
@@ -43,6 +47,12 @@ export default {
         envValue() {
             return this.environmentManager.environmentvalue
         },
+        roundValue() {
+            return this.roundManager.roundValue;
+        },
+        player() {
+            return this.roundManager.individualRoundPlayer.player.name;
+        },
         ...mapState(["environmentManager","roundManager","isStart"])
     }
 }
@@ -61,7 +71,27 @@ export default {
     .play-header, .play-footer {
         flex-shrink: 0;
         padding: 10px 0;
+
+        .bars {
+            flex: 1;
+        }
+
+        .round-number {
+            flex-shrink: 0;
+            font-size: 3em;
+            color: white;
+            padding: 10px 15px;
+        }
+
     }
+
+    .play-title {
+        color: white;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 200;
+    }
+
 
     .content {
         flex: 1;

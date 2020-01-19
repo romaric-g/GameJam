@@ -12,7 +12,7 @@ export default class RoundManager {
         this.players = players
         this.round = 0;
         this.stats = stats.NONE
-        this.individualPlayer = null;
+        this.individualRoundPlayer = null;
         this.player
         this.roundActions = null;
     }
@@ -22,22 +22,22 @@ export default class RoundManager {
         this.individualStats = stats.EVENT
 
         //todo gerer le systeme d'evenement puis, executer en calback 'startIndividualStats'
-        startIndividualStats()
+        this.startIndividualStats()
     }
 
     startIndividualStats() {
         this.individualStats = stats.INDIVIDUAL
         this.roundActions = [];
-        players.forEach(player => {
+        this.players.forEach(player => {
             this.roundActions.push(new RoundAction(player));
         });
 
-        this.roundActions.shift();
+        this.nextPlayer()
     }
 
     nextPlayer() {
-        if ( (this.individualPlayer = this.roundActions.shift()) !== undefined ) {
-            this.individualPlayer.startAction(this.nextPlayer);
+        if ( (this.individualRoundPlayer = this.roundActions.shift()) !== undefined ) {
+            this.individualRoundPlayer.startAction(this.nextPlayer);
         } else{
             this.startMoveStats();
         }
