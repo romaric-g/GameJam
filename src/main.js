@@ -13,6 +13,11 @@ const router = new VueRouter({
     component: require('./components/Home.vue').default
   },
   {
+    path: '/credit',
+    name: 'Credit',
+    component: require('./components/Credit.vue').default
+  },
+  {
     path: '/play',
     component: require('./components/Play.vue').default,
     children: [
