@@ -1,7 +1,7 @@
 <template>
     <div class="index-play">
         <div class="actions-grid">
-            <button @click.prevent="clickScience" class="science-box">
+            <button @click.prevent="clickScience" class="science-box" :class="{unusable: !availbableAction}">
 
                 <p class="entitled">Science</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-n</title><path d="M469.11,382.76,325,153.92V74h32V32H155V74h32v79.92L42.89,382.76c-13,20.64-14.78,43.73-3,65.1S71.59,480,96,480H416c24.41,0,44.32-10.76,56.1-32.14S482.14,403.4,469.11,382.76ZM224.39,173.39a29.76,29.76,0,0,0,4.62-16V74h54v84.59a25.85,25.85,0,0,0,4,13.82L356.82,283H155.18Z"/></svg>
@@ -10,11 +10,11 @@
                     <p class="info">niveau</p>
                 </div>
             </button>
-            <button @click.prevent="clickResource" class="resource-box">
+            <button @click.prevent="clickResource" class="resource-box" :class="{unusable: !availbableAction}">
                 <p class="entitled">Ressource</p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M327.1 96c-89.97 0-168.54 54.77-212.27 101.63L27.5 131.58c-12.13-9.18-30.24.6-27.14 14.66L24.54 256 .35 365.77c-3.1 14.06 15.01 23.83 27.14 14.66l87.33-66.05C158.55 361.23 237.13 416 327.1 416 464.56 416 576 288 576 256S464.56 96 327.1 96zm87.43 184c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24 13.26 0 24 10.74 24 24 0 13.25-10.75 24-24 24z"/></svg>
             </button>
-            <button @click.prevent="clickCapacity" class="capacity-box">
+            <button @click.prevent="clickCapacity" class="capacity-box unusable">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M511.328,20.8027c-11.60759,38.70264-34.30724,111.70173-61.30311,187.70077,6.99893,2.09372,13.4042,4,18.60653,5.59368a16.06158,16.06158,0,0,1,9.49854,22.906c-22.106,42.29635-82.69047,152.795-142.47819,214.40356-.99984,1.09373-1.99969,2.5-2.99954,3.49995A194.83046,194.83046,0,1,1,57.085,179.41009c.99985-1,2.40588-2,3.49947-3,61.59994-59.90549,171.97367-120.40473,214.37343-142.4982a16.058,16.058,0,0,1,22.90274,9.49988c1.59351,5.09368,3.49947,11.5936,5.5929,18.59351C379.34818,35.00565,452.43074,12.30281,491.12794.70921A16.18325,16.18325,0,0,1,511.328,20.8027ZM319.951,320.00207A127.98041,127.98041,0,1,0,191.97061,448.00046,127.97573,127.97573,0,0,0,319.951,320.00207Zm-127.98041-31.9996a31.9951,31.9951,0,1,1-31.9951-31.9996A31.959,31.959,0,0,1,191.97061,288.00247Zm31.9951,79.999a15.99755,15.99755,0,1,1-15.99755-15.9998A16.04975,16.04975,0,0,1,223.96571,368.00147Z"/></svg>
                 <p class="entitled">Utilisation competence</p>
                 <div class="number-info">
@@ -22,6 +22,7 @@
                     <p class="info">energies</p>
                 </div>
             </button>
+            <button @click.prevent="clickDone" class="next-player" :class="{unusable: availbableAction}"><p class="entitled">Finir le tour</p></button>
         </div>
     </div>
 </template>
@@ -38,19 +39,25 @@ export default {
     store,
     methods: {
         clickScience(event) {
-            store.commit('RUN_INDIVIDUAL_ACTION', 0);
+            store.commit('RUN_INDIVIDUAL_ACTION', 1);
             this.$router.push('/play/science');
         },
         clickResource(event) {
-            store.commit('RUN_INDIVIDUAL_ACTION', 1);
+            store.commit('RUN_INDIVIDUAL_ACTION', 2);
             this.$router.push('/play/ressource');
         },
         clickCapacity(event) {
 
         },
+        clickDone(event) {
+            store.commit('NEXT_PLAYER')
+        }
     },
     computed: {
-        ...mapState(["isStart","players"])
+        availbableAction() {
+            return this.roundManager.individualRoundPlayer.actionChoise == 0
+        },
+        ...mapState(["isStart","players","roundManager"])
     }
 }
 </script>
@@ -66,7 +73,7 @@ export default {
         grid-gap: .5em;
         padding: 20px;
 
-        & > * {
+        & > button {
             
             border: none;
             position: relative;
@@ -77,11 +84,21 @@ export default {
             justify-content: center;
             align-items: center;
             transition-duration: 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &.unusable {
+                opacity: 0.5;
+
+                &:hover {
+                    transform: none;
+                    cursor: not-allowed;
+                }
+            }
         }
 
-        & > *:hover {
-            transform: scale(1.05);
-        }
         .science-box {
             grid-column: 1;
         }
@@ -142,6 +159,17 @@ export default {
             line-height: 1em;
             color: #ef476f;
             text-align: center;
+        }
+    }
+
+    .next-player {
+        grid-row: 3;
+        grid-column: 1 / span 2;
+        height: 60px!important;
+
+        p.entitled {
+            position: relative;
+            bottom: unset;left: unset;right: unset;
         }
     }
 
