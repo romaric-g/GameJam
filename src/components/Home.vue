@@ -4,10 +4,10 @@
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
         <div class="addPlayerBox">
-            <input v-model="playerName" class="writeBox" type="text" placeholder="Nom du joueur" name="player" value="" @submit.prevent="addPlayer"/>
-            <button class="submitBox" type="submit" @click.prevent="addPlayer()">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="357px" height="357px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve"><g><g id="add"><path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/></g></g></svg>
-            </button>
+          <input v-model="playerName" class="writeBox" type="text" placeholder="Nom du joueur" name="player" value="" @submit.prevent="addPlayer"/>
+          <button class="submitBox" type="submit" @click.prevent="addPlayer()">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="357px" height="357px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve"><g><g id="add"><path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/></g></g></svg>
+          </button>
         </div>
       </form>
       <div class="player-list">
@@ -30,6 +30,25 @@
 import store from "../TodosStore.js"
 import { mapState } from 'vuex'
 
+let played = false;
+
+var audio = new Audio('src/sounds/main.mp3');
+audio.loop = 1;
+audio.volume = 1;
+var playPromise = audio.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
 export default {
   data() {
     return {
@@ -43,12 +62,19 @@ export default {
       this.playerName = ""
     },
     launch: function(event) {
+      if(!played){
+        audio.play();
+        played = true;
+      } else {
+        audio.pause();
+        played = false
+      }
       store.commit('START_GAME');
       this.$router.push('/play');
     },
     del: function(item){
       store.commit('DELETE_PLAYER', item)
-    }
+    },
   },
   computed: {
     ...mapState(["isStart","players"])
