@@ -53,7 +53,7 @@ export default {
     card() {
         return this.scienceCardManager.availableCard
     },
-    ...mapState(["isStart","players","scienceCardManager", "inventory"])
+    ...mapState(["isStart","players","scienceCardManager", "inventory","roundManager"])
   }
 }
 </script>
@@ -112,7 +112,7 @@ export default {
     }
 
     .buttons {
-        height: 60px;
+        height: 40px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-top: 5px;

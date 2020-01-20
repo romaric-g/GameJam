@@ -68,11 +68,13 @@ export default {
   padding: 5px 10px;
   box-sizing: border-box;
 
+  .play-header {
+    display: flex;
+    flex-direction: row;
+  }
   .play-header, .play-footer {
     flex-shrink: 0;
     padding: 10px 0;
-    display: flex;
-    flex-direction: row;
 
     .bars {
       flex: 1;

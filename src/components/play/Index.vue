@@ -39,12 +39,16 @@ export default {
     store,
     methods: {
         clickScience(event) {
-            store.commit('RUN_INDIVIDUAL_ACTION', 1);
-            this.$router.push('/play/science');
+            if(this.availbableAction) {
+                store.commit('RUN_INDIVIDUAL_ACTION', 1);
+                this.$router.push('/play/science');
+            }
         },
         clickResource(event) {
-            store.commit('RUN_INDIVIDUAL_ACTION', 2);
-            this.$router.push('/play/ressource');
+            if(this.availbableAction) {
+                store.commit('RUN_INDIVIDUAL_ACTION', 2);
+                this.$router.push('/play/ressource');
+            }
         },
         clickCapacity(event) {
 
