@@ -3,33 +3,35 @@
         <p>{{ name }}</p>
         <div class="progressBar">
             <div class="bar">
-                <span :ref="id" class="progress"></span>
+                <span id="power" :ref="id" class="progress"></span>
             </div>
             <div class="status">
-                <p>{{ barValue + "/" + maxValue }}</p>
+                <p>{{ powerManager.powervalue + "/" + powerManager.powerLimite }}</p>
             </div>
-        </div>   
-    </div>   
+        </div>
+    </div>
 </template>
 
 <script>
+import store from "../../TodosStore.js"
+import { mapState } from 'vuex'
 
 export default {
     props: {
         name: String,
-        currentValue: Number,
-        maxValue: Number
+    },
+    computed: {
+      ...mapState(["powerManager"])
     },
     data () {
         return {
             id: null,
-            barValue: this.currentValue
         }
     },
     mounted () {
         this.id = this._uid
         this.$nextTick((e) => {
-            this.updateBar(this.currentValue)
+            this.updateBar(store.state.powerManager.powervalue)
         })
 
     },
@@ -39,9 +41,8 @@ export default {
         }
     },
     methods: {
-        updateBar: function (a) {  
-            console.log(a)
-            this.$refs[this.id].setAttribute('style', ('width: ' + a / (this.maxValue / 100) + '%') );
+        updateBar: function (a) {
+            this.$refs[this.id].setAttribute('style', ('width: ' + a / (store.state.powerManager.powerLimite / 100) + '%') );
         }
     }
 }

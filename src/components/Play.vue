@@ -1,9 +1,9 @@
 <template>
-  <div v-if="isStart" class="play-page">
+  <div v-if="isStart" class="play-page" @click="update()">
     <div class="play-header">
-      <div class="bars">
-        <ProgressBar name="Ecologie" v-bind:currentValue="this.envValue" v-bind:maxValue="100" ></ProgressBar>
-        <ProgressBar name="Energie" v-bind:currentValue="50" v-bind:maxValue="100" ></ProgressBar>
+      <div class="bars" id="bars">
+        <ProgressEnvironmentBar name="Ecologie"></ProgressEnvironmentBar>
+        <ProgressPowerBar name="Energie"></ProgressPowerBar>
       </div>
       <div class="round-number">
         <p>{{ roundValue }}</p>
@@ -31,18 +31,14 @@
 </template>
 
 <script>
-import ProgressBar from "./elements/ProgressBar.vue"
+import ProgressEnvironmentBar from "./elements/ProgressEnvironmentBar.vue"
+import ProgressPowerBar from "./elements/ProgressPowerBar.vue"
 import store from "../TodosStore.js"
 import { mapState } from 'vuex'
 
 export default {
-  components: { ProgressBar },
+  components: { ProgressEnvironmentBar, ProgressPowerBar },
   store,
-  data() {
-    return {
-
-    }
-  },
   computed: {
     envValue() {
       return this.environmentManager.environmentvalue
@@ -53,7 +49,13 @@ export default {
     player() {
       return this.roundManager.individualRoundPlayer.player.name;
     },
-    ...mapState(["environmentManager","roundManager","isStart"])
+    ...mapState(["environmentManager", "powerManager","roundManager","isStart"])
+  },
+  methods:{
+    update: function(event){
+      document.getElementById("environment").setAttribute('style', ('width: ' + store.state.environmentManager.environmentvalue / (store.state.environmentManager.environmentLimite / 100) + '%'))
+      document.getElementById("power").setAttribute('style', ('width: ' + store.state.powerManager.powervalue / (store.state.powerManager.powerLimite / 100) + '%'))
+    }
   }
 }
 </script>

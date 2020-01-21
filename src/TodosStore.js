@@ -4,18 +4,21 @@ import RoundManager from './objects/RoundManager.js'
 import EnvironmentManager from './objects/EnvironmentManager.js'
 import Inventory from './objects/Inventory.js'
 import ScienceCardManager from './objects/ScienceCardManager.js'
+import PowerManager from './objects/PowerManager.js'
 
 var players = []
 var roundManager = new RoundManager(players);
 var environmentManager = new EnvironmentManager()
 var inventory = new Inventory()
 var scienceCardManager = new ScienceCardManager();
+var powerManager = new PowerManager();
 
 export default new vuex.Store({
   state: {
     players,
     isStart: false,
     roundManager,
+    powerManager,
     environmentManager,
     scienceCardManager,
     inventory
@@ -27,12 +30,8 @@ export default new vuex.Store({
         state.players.push(p)
       }
     },
-    ADD_VALUE_BAR: (state, bar, value) => {
-      if(bar == 1) {
-        state.environmentManager.environmentLimite+= value;
-      }else if(bar == 2) {
-        state.environmentManager.environmentvalue+= value;
-      }
+    ADD_VALUE_BAR_POW: (state, value) => {
+      state.powerManager.powervalue+= value;
     },
     DELETE_PLAYER: (state, item) => {
       const index = state.players.indexOf(item);
