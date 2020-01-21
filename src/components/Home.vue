@@ -1,6 +1,7 @@
 <template>
   <div class="home-page">
     <div class="add-player">
+      <p class="titlegame">Nuit et <strike>Jours</strike> </p> 
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
         <div class="addPlayerBox">
@@ -194,4 +195,16 @@ export default {
     }
   }
 }
+
+.titlegame{
+  color: black;
+  text-align: center;
+  font-size: 80px;
+}
+
+strike{
+
+  color: white;
+}
+
 </style>
