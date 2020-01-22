@@ -35,11 +35,28 @@ let played = false;
 
 var audio = new Audio('src/sounds/main.mp3');
 audio.loop = 1;
-audio.volume = 1;
+audio.volume = 0.5;
 var playPromise = audio.play();
 if (playPromise !== undefined) {
   playPromise.then(_ => {
     audio.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
+var audio1 = new Audio('src/sounds/clic.mp3');
+audio1.loop = 0;
+audio1.volume = 1;
+var playPromise = audio1.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio1.pause();
     // Automatic playback started!
     // Show playing UI.
   })
@@ -59,12 +76,12 @@ export default {
   store,
   methods: {
     addPlayer (event) {
-      // Lancer bruit de clic
+      audio1.play();
       store.commit('REGISTER_PLAYER', this.playerName);
       this.playerName = ""
     },
     launch: function(event) {
-      // Lancer bruit de clic
+      audio1.play()
       if(!played){
         audio.play();
         played = true;
@@ -105,8 +122,8 @@ export default {
 
       &::after {
         content: '';
-        position: absolute;
         bottom: -10px;
+        position: absolute;
         left: 0;
         height: 1px;
         background-color: #EF476F;

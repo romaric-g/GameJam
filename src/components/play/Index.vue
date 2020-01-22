@@ -32,6 +32,23 @@
 import store from "../../TodosStore.js"
 import { mapState } from 'vuex'
 
+var audio1 = new Audio('src/sounds/clic.mp3');
+audio1.loop = 0;
+audio1.volume = 1;
+var playPromise = audio1.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio1.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
 export default {
   data() {
     return {}
@@ -39,24 +56,24 @@ export default {
   store,
   methods: {
     clickScience(event) {
-      // Lancer bruit de clic
+      audio1.play();
       if(this.availbableAction) {
         store.commit('RUN_INDIVIDUAL_ACTION', 1);
         this.$router.push('/play/science');
       }
     },
     clickResource(event) {
-      // Lancer bruit de clic
+      audio1.play();
       if(this.availbableAction) {
         store.commit('RUN_INDIVIDUAL_ACTION', 2);
         this.$router.push('/play/ressource');
       }
     },
     clickCapacity(event) {
-      // Lancer bruit ded clic
+      audio1.play();
     },
     clickDone(event) {
-      // Lancer bruit de clic
+      audio1.play();
       store.commit('NEXT_PLAYER')
     }
   },
