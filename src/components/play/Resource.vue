@@ -39,6 +39,7 @@ export default {
   store,
   methods: {
     back() {
+      // Lancer bruit de retour
       store.commit('ADD_VALUE_BAR_POW', 3);
       this.$router.push('/play');
     }

@@ -39,21 +39,24 @@ export default {
   store,
   methods: {
     clickScience(event) {
+      // Lancer bruit de clic
       if(this.availbableAction) {
         store.commit('RUN_INDIVIDUAL_ACTION', 1);
         this.$router.push('/play/science');
       }
     },
     clickResource(event) {
+      // Lancer bruit de clic
       if(this.availbableAction) {
         store.commit('RUN_INDIVIDUAL_ACTION', 2);
         this.$router.push('/play/ressource');
       }
     },
     clickCapacity(event) {
-
+      // Lancer bruit ded clic
     },
     clickDone(event) {
+      // Lancer bruit de clic
       store.commit('NEXT_PLAYER')
     }
   },

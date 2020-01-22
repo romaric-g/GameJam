@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div class="play-button-outer">
-      <div class="play-button" @click="playSound()"></div>
-    </div> -->
     <router-view/>
   </div>
 </template>

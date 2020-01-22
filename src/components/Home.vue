@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="add-player">
-      <p class="titlegame">Nuit et <strike>Jours</strike> </p> 
+      <p class="titlegame">Nuit et <strike>Jours</strike> </p>
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
         <div class="addPlayerBox">
@@ -59,10 +59,12 @@ export default {
   store,
   methods: {
     addPlayer (event) {
+      // Lancer bruit de clic
       store.commit('REGISTER_PLAYER', this.playerName);
       this.playerName = ""
     },
     launch: function(event) {
+      // Lancer bruit de clic
       if(!played){
         audio.play();
         played = true;
@@ -74,6 +76,7 @@ export default {
       this.$router.push('/play');
     },
     del: function(item){
+      // Lancer bruit de clci de retour
       store.commit('DELETE_PLAYER', item)
     },
   },
