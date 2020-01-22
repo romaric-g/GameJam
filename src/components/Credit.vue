@@ -27,6 +27,22 @@
 
 <script>
 
+var audio1 = new Audio('src/sounds/credit.mp3');
+audio1.loop = 0;
+audio1.volume = 1;
+var playPromise = audio1.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio1.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
 </script>
 
 <style lang="scss">
