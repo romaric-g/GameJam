@@ -31,7 +31,24 @@ export default new vuex.Store({
       }
     },
     ADD_VALUE_BAR_POW: (state, value) => {
-      state.powerManager.powervalue+= value;
+      if(state.powerManager.powervalue+value > 100){
+        state.powerManager.powervalue = 100;
+      } else if (state.powerManager.powervalue + value <= 0){
+        // Fin de partie => Lancer la page de game hover
+        state.powerManager.powervalue = 0;
+      } else {
+        state.powerManager.powervalue+= value;
+      }
+    },
+    ADD_VALUE_BAR_ENV: (state, value) => {
+      if(state.environmentManager.environmentvalue+value >= 100){
+        // Fin de la parte => Lancer la page de victoire
+        state.environmentManager.environmentvalue = 100;
+      } else if (state.environmentManager.environmentvalue + value < 0){
+        state.environmentManager.environmentvalue = 0;
+      } else {
+        state.environmentManager.environmentvalue+= value;
+      }
     },
     DELETE_PLAYER: (state, item) => {
       const index = state.players.indexOf(item);
