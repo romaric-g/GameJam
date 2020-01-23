@@ -1,8 +1,6 @@
 <template>
 
-  <div class="box">
-    <p>GG c'est gagné</p>
-  </div>
+ <div><img src="../images/map/victoire.jpg" alt="images/victoire.jpg"></div>
 
 </template>
 
@@ -11,15 +9,9 @@
 </script>
 
 <style lang="scss">
-
-.box {
-  padding: 30px;
-}
-p{
-  color: white;
-  font-size: 30px;
-  margin: 20px;
-  font-family: 'Titillium Web', sans-serif;
+img{ 
+  width: 550px;
+  height: 1036px;
 }
 
 </style>

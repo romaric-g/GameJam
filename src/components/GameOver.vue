@@ -10,5 +10,11 @@
 
 <style lang="scss">
 
+img{ 
+  width: 572px;
+  height: 1038px;
+
+}
+
 
 </style>
