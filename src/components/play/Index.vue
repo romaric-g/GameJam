@@ -60,6 +60,7 @@ export default {
       if(this.availbableAction) {
         store.commit('RUN_INDIVIDUAL_ACTION', 1);
         this.$router.push('/play/science');
+        console.log(store.state.powerManager.powervalue)
       }
     },
     clickResource(event) {
@@ -75,13 +76,16 @@ export default {
     clickDone(event) {
       audio1.play();
       store.commit('NEXT_PLAYER')
+      if(store.state.powerManager.powervalue == 0){
+        this.$router.push('/gameOver');
+      }
     }
   },
   computed: {
     availbableAction() {
       return this.roundManager.individualRoundPlayer.actionChoise == 0
     },
-    ...mapState(["isStart","players","roundManager"])
+    ...mapState(["isStart","players","roundManager", "powerManager"])
   }
 }
 </script>

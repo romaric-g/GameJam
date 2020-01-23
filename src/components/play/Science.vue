@@ -58,8 +58,13 @@ export default {
   methods: {
     keepCard(event) {
       audio1.play();
-      store.commit('SCIENCE_CARD_CHOISE', true)
-      this.$router.push('/play');
+      store.commit('ADD_VALUE_BAR_ENV', 50);
+      if(environmentManager.environmentvalue+value >= 100){
+        this.$router.push('/gg');
+      }else{
+        store.commit('SCIENCE_CARD_CHOISE', true)
+        this.$router.push('/play');
+      }
     },
     destroyCard(event) {
       // Lancer bruit de retour
@@ -71,7 +76,7 @@ export default {
     card() {
       return this.scienceCardManager.availableCard
     },
-    ...mapState(["isStart","players","scienceCardManager", "inventory","roundManager"])
+    ...mapState(["isStart","players","scienceCardManager", "inventory","roundManager", "environmentManager"])
   }
 }
 </script>

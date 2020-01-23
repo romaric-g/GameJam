@@ -52,11 +52,12 @@ export default {
     ...mapState(["environmentManager", "powerManager","roundManager","isStart"])
   },
   methods:{
-    update: function(event){
+    update: function(event){      if(store.state.powerManager.powervalue != 0){
       document.getElementById("environment").setAttribute('style', ('width: ' + store.state.environmentManager.environmentvalue / (store.state.environmentManager.environmentLimite / 100) + '%'))
       document.getElementById("power").setAttribute('style', ('width: ' + store.state.powerManager.powervalue / (store.state.powerManager.powerLimite / 100) + '%'))
     }
   }
+}
 }
 
 

@@ -27,6 +27,16 @@ const router = new VueRouter({
     ]
   },
   {
+    path: '/gameOver',
+    name: 'GameOver',
+    component:  require('./components/GameOver.vue').default
+  },
+  {
+    path: '/gg',
+    name: 'gg',
+    component: require('./components/GG.vue').default
+  },
+  {
     path: '*',
     redirect: '/'
   }]
