@@ -1,5 +1,5 @@
 <template>
-<div><img src="images/gameover.jpg" alt="images/gameover.jpg"></div>
+<div><img src="../images/map/gameover.jpg" alt="images/gameover.jpg"></div>
 
 
 </template>
