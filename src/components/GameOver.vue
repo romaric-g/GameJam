@@ -10,10 +10,14 @@
 
 <style lang="scss">
 
-img{ 
-  width: 572px;
-  height: 1038px;
+img{
+  width: 500px;
+  height: 943px;
+  position: center;
+}
 
+div{
+  background-color: black;
 }
 
 
