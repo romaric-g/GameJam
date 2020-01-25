@@ -18,6 +18,11 @@ const router = new VueRouter({
     component: require('./components/Credit.vue').default
   },
   {
+    path: '/map',
+    name: "Map",
+    component: require('./components/Map.vue').default
+  },
+  {
     path: '/play',
     component: require('./components/Play.vue').default,
     children: [

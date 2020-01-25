@@ -99,13 +99,13 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: .5em;
-    padding: 20px;
+    padding: 10px 30px;
 
     & > button {
 
       border: none;
       position: relative;
-      height: 160px;
+      height: 150px;
       background-color: white;
       cursor: pointer;
       display: flex;

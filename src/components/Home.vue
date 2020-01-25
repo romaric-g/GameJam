@@ -217,9 +217,10 @@ export default {
 }
 
 .titlegame{
-  color: black;
+  color: #EF476F;
   text-align: center;
-  font-size: 80px;
+  font-size: 60px;
+  line-height: 1em;
 }
 
 strike{
