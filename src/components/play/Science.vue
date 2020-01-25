@@ -58,8 +58,9 @@ export default {
   methods: {
     keepCard(event) {
       audio1.play();
-      store.commit('ADD_VALUE_BAR_ENV', 50);
-      if(environmentManager.environmentvalue+value >= 100){
+      let value = Math.floor(Math.random() * Math.floor(10))
+      store.commit('ADD_VALUE_BAR_ENV', value);
+      if(store.state.environmentManager.environmentvalue + value >= 100){
         this.$router.push('/gg');
       }else{
         store.commit('SCIENCE_CARD_CHOISE', true)
