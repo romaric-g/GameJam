@@ -6,13 +6,14 @@
 
 <script>
 
+
 </script>
 
 <style lang="scss">
 
 img{
   width: 500px;
-  height: 943px;
+  height: 1037px;
   position: center;
 }
 
