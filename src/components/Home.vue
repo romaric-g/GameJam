@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="add-player">
-      <p class="titlegame">Nuit et <strike>Jours</strike> </p>
+      <p class="titlegame">Nuit et <strike>Jour</strike> </p>
       <p class="title">Ajouter un<br>joueur</p>
       <form name="addplayerform">
         <div class="addPlayerBox">
