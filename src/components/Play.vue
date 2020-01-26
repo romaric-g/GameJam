@@ -23,7 +23,7 @@
             <p v-if="slot.card">{{ slot.card.id }}</p>
           </div>
         </div>
-        <a class="biome-link" href="#" @click.prevent="launch()">Voir la carte</a>
+        <a class="biome-link" href="#" @click.prevent="showMap()">Voir la carte</a>
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@ export default {
         document.getElementById("power").setAttribute('style', ('width: ' + store.state.powerManager.powervalue / (store.state.powerManager.powerLimite / 100) + '%'))
       }
     },
-    launch: function(event){
+    showMap: function(event){
       this.$router.push('/map');
     }
   }
