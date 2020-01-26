@@ -5,7 +5,7 @@
         <div class="rectangle">
           <div class="rond">
             <div class="title">
-              <p>Lorem lorem</p>
+              <p>Carte ressource</p>
             </div>
             <div class="carre">
               <h2>1</h2>
