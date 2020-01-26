@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
 import ProgressEnvironmentBar from "./elements/ProgressEnvironmentBar.vue"
 import ProgressPowerBar from "./elements/ProgressPowerBar.vue"
 import store from "../TodosStore.js"
@@ -59,6 +60,7 @@ export default {
   }
 }
 }
+
 
 
 </script>
