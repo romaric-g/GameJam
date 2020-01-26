@@ -4,18 +4,18 @@ export default class ScienceCardManager {
     
     constructor(name, description) {
         this.cards = [
-            new ScienceCard("Le nom 1", "La description"),
-            new ScienceCard("Le nom 2", "La description"),
-            new ScienceCard("Le nom 3", "La description"),
-            new ScienceCard("Le nom 4", "La description"),
-            new ScienceCard("Le nom 5", "La description"),
-            new ScienceCard("Le nom 6", "La description"),
-            new ScienceCard("Le nom 7", "La description"),
-            new ScienceCard("Le nom 8", "La description"),
-            new ScienceCard("Le nom 9", "La description"),
-            new ScienceCard("Le nom 10", "La description"),
-            new ScienceCard("Le nom 11", "La description"),
-            new ScienceCard("Le nom 12", "La description")
+            new ScienceCard(1,"Le nom 1", "La description"),
+            new ScienceCard(2,"Le nom 2", "La description"),
+            new ScienceCard(3,"Le nom 3", "La description"),
+            new ScienceCard(4,"Le nom 4", "La description"),
+            new ScienceCard(5,"Le nom 5", "La description"),
+            new ScienceCard(6,"Le nom 6", "La description"),
+            new ScienceCard(7,"Le nom 7", "La description"),
+            new ScienceCard(8,"Le nom 8", "La description"),
+            new ScienceCard(9,"Le nom 9", "La description"),
+            new ScienceCard(10,"Le nom 10", "La description"),
+            new ScienceCard(11,"Le nom 11", "La description"),
+            new ScienceCard(12,"Le nom 12", "La description")
         ]
         this.availableCard = null;
     }
