@@ -49,6 +49,25 @@ if (playPromise !== undefined) {
   });
 }
 
+var audio2 = new Audio('src/sounds/game over.mp3');
+audio2.loop = 0;
+audio2.volume = 1;
+var playPromise = audio2.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio2.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
+var audio3 = new Audio('src/sounds/main.mp3');
+
 export default {
   data() {
     return {}
@@ -77,6 +96,8 @@ export default {
       audio1.play();
       store.commit('NEXT_PLAYER')
       if(store.state.powerManager.powervalue == 0){
+        audio2.play();
+        store.commit('STOP')
         this.$router.push('/gameOver');
       }
     }

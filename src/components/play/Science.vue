@@ -50,6 +50,25 @@ if (playPromise !== undefined) {
   });
 }
 
+var audio2 = new Audio('src/sounds/musique de victoire.mp3');
+audio2.loop = 0;
+audio2.volume = 1;
+var playPromise = audio2.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio2.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
+var audio3 = new Audio('src/sounds/main.mp3');
+
 export default {
   data() {
     return {}
@@ -61,6 +80,8 @@ export default {
       let value = Math.floor(Math.random() * Math.floor(10))
       store.commit('ADD_VALUE_BAR_ENV', value);
       if(store.state.environmentManager.environmentvalue + value >= 100){
+        audio2.play();
+        store.commit('STOP');
         this.$router.push('/gg');
       }else{
         store.commit('SCIENCE_CARD_CHOISE', true)

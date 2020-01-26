@@ -33,23 +33,6 @@ import { mapState } from 'vuex'
 
 let played = false;
 
-var audio = new Audio('src/sounds/main.mp3');
-audio.loop = 1;
-audio.volume = 0.5;
-var playPromise = audio.play();
-if (playPromise !== undefined) {
-  playPromise.then(_ => {
-    audio.pause();
-    // Automatic playback started!
-    // Show playing UI.
-  })
-  .catch(error => {
-    console.log(error)
-    // Auto-play was prevented
-    // Show paused UI.
-  });
-}
-
 var audio1 = new Audio('src/sounds/clic.mp3');
 audio1.loop = 0;
 audio1.volume = 1;
@@ -83,10 +66,11 @@ export default {
     launch: function(event) {
       audio1.play()
       if(!played){
-        audio.play();
+        store.commit('MUSIC');
+        //audio.play();
         played = true;
       } else {
-        audio.pause();
+        //audio.pause();
         played = false
       }
       store.commit('START_GAME');

@@ -13,6 +13,23 @@ var inventory = new Inventory()
 var scienceCardManager = new ScienceCardManager();
 var powerManager = new PowerManager();
 
+var audio = new Audio('src/sounds/main.mp3');
+audio.loop = 1;
+audio.volume = 0.5;
+var playPromise = audio.play();
+if (playPromise !== undefined) {
+  playPromise.then(_ => {
+    audio.pause();
+    // Automatic playback started!
+    // Show playing UI.
+  })
+  .catch(error => {
+    console.log(error)
+    // Auto-play was prevented
+    // Show paused UI.
+  });
+}
+
 export default new vuex.Store({
   state: {
     players,
@@ -24,6 +41,12 @@ export default new vuex.Store({
     inventory
   },
   mutations: {
+    MUSIC: (state) => {
+      audio.play();
+    },
+    STOP: (state) => {
+      audio.pause()
+    },
     REGISTER_PLAYER: (state, value) => {
       if(!state.isStart && value) {
         let p = new Player(value, null)
